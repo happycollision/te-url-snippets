@@ -5,6 +5,14 @@ The multibrowser logic works this way:
 1. If Safari is running, regardless of whether Chrome is running, get the URL from Safari.
 2. If Chrome is running, and Safari isn't, get the URL from Chrome.
 
+Pinned Sites logic works this way:
+
+1. If Chrome wins as the browser of choice, no Pinned Site logic takes place.
+2. If Safari is the browser being used, then the Pinned Sites are not included in the tab count. *eg.* If you have three Pinned Sites in Safari, invoking the `;1url` abbreviation command will get the url of the first tab that is NOT a Pinned Site.
+3. To include Pinned Sites when counting tabs, use the __a1url - a6url__ and other abbreviations prefixed with "a" (as in "absolute").
+
+Note: There is currently [an issue](https://github.com/happycollision/te-url-snippets/issues/1) that affects the Pinned Site count when adding or removing Pinned Sites from Safari. Your count will not be correct until you close and relaunch Safari. Due to the nature of Pinned Sites and their intended use, I do not see this as a major problem for most people.
+
 
 ## furl ##
 
@@ -29,6 +37,10 @@ Like `;furl` this was first written for TypeIt4Me and described [here][3], then 
 These are AppleScript snippets that print the shortened URLs of the *n*th tab, counting from the left, of the frontmost browser window. It uses the [Metamark][10] shortening API, which requires special characters in the input URL to be encoded. The `escapeurl` script, included in the repository, is called by snippet to do the encoding. I use the abbreviations `;1surl` through `;6surl` to invoke them.
 
 These snippets were first described [here][4].
+
+## a1url - a6url and a1surl - a6surl ##
+
+These abbreviations do not have any logic dealing with Safari's Pinned Sites feature. They count all tabs, including Pinned Sites, as normal tabs. The "a" in front of the abbreviation stands for "absolute". These scripts work exactly as their counterparts where Chrome is concerned.
 
 ## psurl ##
 
