@@ -3,10 +3,11 @@ tell application "System Events"
  set numChrome to count (every process whose name is "Google Chrome")
 end tell
 
+set pinnedNum to do shell script "defaults read /Users/Don/Library/Safari/LastSession.plist SessionPinnedTabs | grep -c TabURL"
 set tabNum to 4
 
 if numSafari > 0 then
- tell application "Safari" to set longURL to  URL of tab tabNum of front window
+ tell application "Safari" to set longURL to  URL of tab (tabNum + pinnedNum) of front window
 else
  if numChrome > 0 then
    tell application "Google Chrome" to  set longURL to  URL of tab tabNum of front window
